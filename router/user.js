@@ -2,7 +2,7 @@ const express = require("express");
 const UserController = require("../controllers/user");
 const mdAuth = require("../middlewares/authenticated");
 const mdRole = require("../middlewares/isRole");
-const upload = require("../middlewares/upload");
+const upload = require("../middlewares/multer");
 
 // Middleware de Multer para la subida de un solo archivo con campo 'avatar'
 const mdUpload = upload("avatars").single("avatar");
