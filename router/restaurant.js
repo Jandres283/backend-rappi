@@ -1,5 +1,5 @@
 const express = require("express");
-const upload = require("../middlewares/multer"); 
+const upload = require('../middlewares/upload'); 
 const RestaurantController = require("../controllers/restaurant");
 const mdAuth = require("../middlewares/authenticated");
 const mdRole = require("../middlewares/isRole");
