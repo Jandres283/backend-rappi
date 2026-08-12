@@ -33,7 +33,6 @@ const dishRoutes = require("./router/dish");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Habilitar CORS explícito permitiendo todos los métodos HTTP
 app.use(
   cors({
     origin: "*",
@@ -68,8 +67,10 @@ const apiRoutes = [
 ];
 
 apiRoutes.forEach((route) => {
-  app.use(`/api/${API_VERSION}`, route);
-  app.use("/api", route);
+  if (route) {
+    app.use(`/api/${API_VERSION}`, route);
+    app.use("/api", route);
+  }
 });
 
 // 6. Manejo de Errores Global
