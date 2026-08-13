@@ -1,0 +1,9 @@
+/* src/pages/web/Orders/MyOrdersPage.scss */
+@use "@/scss/colors" as *;
+@use "@/scss/mixins" as *;
+
+.ordersContainer {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}

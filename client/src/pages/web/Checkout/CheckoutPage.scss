@@ -1,0 +1,442 @@
+/* ======================================================
+   PALETA Y ESTILOS RAPPI PRO (ROSADO BEBÉ / NARANJA)
+   ====================================================== */
+$rappi-orange: #ff441f;
+$rappi-orange-hover: #e03715;
+$bg-pink-baby: #fcebe6;
+$card-bg: #ffffff;
+$card-border: #ffbba8;
+$input-bg: #f8f9fa;
+$text-primary: #1f2937;
+$text-secondary: #6b7280;
+
+.checkoutContainer {
+  background-color: $bg-pink-baby;
+  min-height: 100vh;
+  max-width: 100% !important;
+  padding: 100px 80px 60px;
+  color: $text-primary;
+
+  @media (max-width: 1024px) {
+    padding: 90px 20px 40px;
+  }
+}
+
+/* ======================================================
+   ENCABEZADO DESTACADO
+   ====================================================== */
+.checkoutHeader {
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #ffffff;
+    padding: 20px 28px;
+    border-radius: 18px;
+    border: 2px solid $card-border;
+    box-shadow: 0 10px 25px rgba(255, 68, 31, 0.1);
+
+    .iconBadge {
+      background: linear-gradient(135deg, #ff552e 0%, $rappi-orange 100%);
+      color: #ffffff;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 6px 14px rgba(255, 68, 31, 0.3);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: $text-primary;
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+
+    .subtitle {
+      margin: 4px 0 0 0;
+      font-size: 0.9rem;
+      color: $text-secondary;
+      font-weight: 500;
+    }
+  }
+}
+
+.checkoutGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================
+   CUADROS / TARJETAS PRINCIPALES
+   ====================================================== */
+.addressSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .formGroupBlock {
+    background: $card-bg;
+    border-radius: 18px;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid $card-border;
+    box-shadow: 0 12px 28px rgba(255, 68, 31, 0.12);
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: $text-primary;
+      background: linear-gradient(90deg, #fff2ef 0%, #ffffff 100%);
+      border-bottom: 1.5px solid #ffdcd3;
+
+      svg {
+        color: #ffffff;
+        background: $rappi-orange;
+        font-size: 1.1rem;
+        padding: 8px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba($rappi-orange, 0.35);
+      }
+    }
+
+    .formContent {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      background: $input-bg;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: $text-primary;
+      font-size: 0.95rem;
+      font-weight: 500;
+      outline: none;
+      transition: all 0.2s ease-in-out;
+
+      &:focus {
+        border-color: $rappi-orange;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba($rappi-orange, 0.15);
+      }
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+    }
+  }
+}
+
+/* ======================================================
+   MÉTODOS DE PAGO
+   ====================================================== */
+.paymentMethodsGrid {
+  padding: 20px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  .paymentOption {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    input[type="radio"] {
+      accent-color: $rappi-orange;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .paymentBadge {
+      width: 62px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+      .icon {
+        color: #ffffff;
+        font-size: 1.25rem;
+      }
+    }
+
+    /* Estilo Tarjeta de Crédito */
+    .cardBadge {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      
+      .chip {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        width: 9px;
+        height: 7px;
+        background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        border-radius: 2px;
+      }
+
+      .icon {
+        margin-left: 12px;
+        color: #f3f4f6;
+      }
+    }
+
+    /* BADGE YAPE / PLIN CON LOGOS VECTORIALES */
+    .yapePlinBadge {
+      background: linear-gradient(135deg, #581c87 0%, #0284c7 100%);
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 2px 4px;
+
+      .svgLogoPlin, .svgLogoYape {
+        height: 26px;
+        width: 26px;
+        object-fit: contain;
+        filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+        transition: transform 0.2s ease;
+      }
+    }
+
+    /* Estilo Efectivo */
+    .cashBadge {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    /* Textos */
+    .paymentText {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .title {
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: $text-primary;
+      }
+
+      .subtext {
+        font-size: 0.8rem;
+        color: $text-secondary;
+        font-weight: 500;
+      }
+    }
+
+    &:hover {
+      border-color: $rappi-orange;
+      background: #fff8f6;
+      transform: translateY(-1px);
+
+      .svgLogoPlin, .svgLogoYape {
+        transform: scale(1.08);
+      }
+    }
+
+    &.active {
+      border-color: $rappi-orange;
+      background: #fff0ed;
+      box-shadow: 0 6px 18px rgba(255, 68, 31, 0.18);
+
+      .paymentText .title {
+        color: $rappi-orange;
+      }
+    }
+  }
+}
+
+.extraPaymentInfo {
+  padding: 0 24px 24px;
+
+  label {
+    display: block;
+    font-size: 0.88rem;
+    color: $text-secondary;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+/* Botón Confirmar Pedido */
+.confirmBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #ff552e 0%, $rappi-orange 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 18px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 25px rgba($rappi-orange, 0.4);
+  transition: all 0.25s ease;
+
+  &:hover:not(:disabled) {
+    background: $rappi-orange-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba($rappi-orange, 0.5);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+/* ======================================================
+   RESUMEN DE LA ORDEN (COLUMNA DERECHA)
+   ====================================================== */
+.summarySection {
+  background: $card-bg;
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+  position: sticky;
+  top: 100px;
+  border: 2px solid $card-border;
+  box-shadow: 0 12px 28px rgba(255, 68, 31, 0.12);
+
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $text-primary;
+    background: linear-gradient(90deg, #fff2ef 0%, #ffffff 100%);
+    border-bottom: 1.5px solid #ffdcd3;
+
+    svg {
+      color: #ffffff;
+      background: $rappi-orange;
+      font-size: 1.1rem;
+      padding: 8px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba($rappi-orange, 0.35);
+    }
+  }
+
+  .emptyCartText {
+    color: $text-secondary;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .summaryContent {
+    padding: 24px;
+
+    .itemsList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .itemRow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.95rem;
+        margin-bottom: 14px;
+
+        .qty {
+          font-weight: 800;
+          color: #ffffff;
+          background: $rappi-orange;
+          padding: 3px 8px;
+          border-radius: 6px;
+        }
+
+        .name {
+          flex: 1;
+          color: $text-primary;
+          font-weight: 600;
+        }
+
+        .price {
+          font-weight: 700;
+          color: $text-primary;
+        }
+      }
+    }
+
+    .divider {
+      height: 2px;
+      background: #f3f4f6;
+      margin: 20px 0;
+    }
+
+    .calcRow {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: $text-secondary;
+      margin-bottom: 10px;
+
+      &.totalRow {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: $text-primary;
+        margin-top: 14px;
+        margin-bottom: 0;
+
+        span:last-child {
+          color: $rappi-orange;
+        }
+      }
+    }
+  }
+}

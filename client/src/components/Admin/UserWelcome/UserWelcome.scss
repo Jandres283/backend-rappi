@@ -1,0 +1,28 @@
+// src/components/Admin/UserWelcome/UserWelcome.scss
+@import "@/scss/colors";
+@import "@/scss/mixins";
+
+.user-welcome-widget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+
+  &__info {
+    h2 {
+      font-size: 1.25rem;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin: 0.25rem 0 0 0;
+    }
+  }
+}

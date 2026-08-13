@@ -1,0 +1,217 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+
+  .ordersCard {
+    background-color: #1a1a28;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 520px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    .btnClose {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      color: #8a8a9e;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    .ordersHeader {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+
+      .headerIcon {
+        color: #ff4757;
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+    }
+
+    .loadingText,
+    .emptyOrders {
+      text-align: center;
+      padding: 40px 0;
+      color: #8a8a9e;
+
+      .emptyIcon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        display: block;
+        margin-inline: auto;
+      }
+    }
+
+    .ordersList {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-right: 6px;
+
+      /* Scrollbar personalizado */
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+        &:hover {
+          background: rgba(255, 255, 255, 0.25);
+        }
+      }
+
+      .orderItem {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 16px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+
+        &:hover {
+          border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .orderTop {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .orderId {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #ffffff;
+          }
+
+          /* Badges de estado dinámicos */
+          .orderStatus {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+
+            .spin {
+              animation: spin 1.5s linear infinite;
+            }
+
+            &.pending {
+              background: rgba(255, 193, 7, 0.15);
+              color: #ffc107;
+              border: 1px solid rgba(255, 193, 7, 0.2);
+            }
+
+            &.preparing {
+              background: rgba(13, 202, 240, 0.15);
+              color: #0dcaf0;
+              border: 1px solid rgba(13, 202, 240, 0.2);
+            }
+
+            &.in-delivery {
+              background: rgba(13, 110, 253, 0.15);
+              color: #3d8bfd;
+              border: 1px solid rgba(13, 110, 253, 0.2);
+            }
+
+            &.delivered {
+              background: rgba(46, 213, 115, 0.15);
+              color: #2ed573;
+              border: 1px solid rgba(46, 213, 115, 0.2);
+            }
+
+            &.cancelled {
+              background: rgba(255, 71, 87, 0.15);
+              color: #ff4757;
+              border: 1px solid rgba(255, 71, 87, 0.2);
+            }
+          }
+        }
+
+        /* Lista resumen de platillos/productos */
+        .orderProductsSummary {
+          list-style: none;
+          padding: 0;
+          margin: 8px 0 12px 0;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+
+          li {
+            font-size: 0.85rem;
+            color: #d1d1e0;
+            line-height: 1.4;
+          }
+        }
+
+        .orderDetails {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.82rem;
+          color: #8a8a9e;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          padding-top: 10px;
+          margin-top: 6px;
+
+          .orderDate {
+            margin: 0;
+          }
+
+          .orderTotal {
+            margin: 0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

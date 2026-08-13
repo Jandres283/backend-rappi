@@ -1,0 +1,683 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+// --- VARIABLES DE TEMA ---
+$primary-orange: #ff5e00;
+$primary-orange-hover: #e05200;
+$dark-text: #0f172a;
+$muted-text: #64748b;
+$light-border: #e2e8f0;
+$card-bg: #ffffff;
+$body-bg: #f8fafc;
+
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+
+// --- ESTILOS GENERALES Y ESTRUCTURA ---
+.restaurant-detail-wrapper {
+  background-color: $body-bg;
+  min-height: 100vh;
+  padding: 1.5rem 1rem 6rem 1rem;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: $dark-text;
+
+  .restaurant-detail-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+// --- BOTONES FLOTANTES ---
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: $radius-full;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: $dark-text;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+    box-shadow: $shadow-md;
+    color: $primary-orange;
+  }
+
+  &.favorite {
+    padding: 0.55rem;
+    border-radius: 50%;
+    font-size: 1rem;
+
+    &.active {
+      background: #ffffff;
+    }
+  }
+}
+
+// --- ESTADO SIN RESTAURANTE ---
+.empty-hero-card {
+  background: $card-bg;
+  border-radius: 24px;
+  border: 1.5px dashed #cbd5e1;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 580px;
+  margin: 3rem auto;
+  box-shadow: $shadow-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.4s ease-out;
+
+  .empty-illustration {
+    position: relative;
+    margin-bottom: 1.75rem;
+
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #fff4ed 0%, #ffe4d6 100%);
+      color: $primary-orange;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 8px 20px rgba(255, 94, 0, 0.15);
+    }
+
+    .pulse-ring {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px dashed $primary-orange;
+      opacity: 0.35;
+      border-radius: 50%;
+      animation: spinRing 12s linear infinite;
+    }
+  }
+
+  .empty-content {
+    h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: $dark-text;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 2rem 0;
+      font-size: 0.95rem;
+      color: $muted-text;
+      line-height: 1.6;
+      max-width: 420px;
+    }
+
+    .primary-btn {
+      background: $primary-orange;
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: $radius-full;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(255, 94, 0, 0.3);
+
+      &:hover {
+        background: $primary-orange-hover;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 94, 0, 0.4);
+      }
+    }
+  }
+}
+
+// --- CABECERA Y TARJETA DEL RESTAURANTE ---
+.restaurant-header-card {
+  background: $card-bg;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  border: 1px solid $light-border;
+  margin-bottom: 2rem;
+
+  /* BANNER NARANJA REDUCIDO */
+  .banner-top {
+    height: 100px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+
+    .back-btn {
+      color: $dark-text;
+    }
+
+    .banner-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .info-bottom {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    position: relative;
+    margin-top: -45px;
+
+    /* RECUADRO DE FOTO FACHADA CORREGIDO */
+    .logo-box {
+      width: 110px;
+      height: 110px;
+      border-radius: $radius-md;
+      background: #ffffff; /* Fondo blanco en vez de negro */
+      border: 3px solid #ffffff;
+      box-shadow: $shadow-md;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img.logo-main-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Cambiado a cover para llenar la cajita limpiamente */
+        object-position: center;
+        display: block;
+      }
+
+      .logo-placeholder {
+        width: 100%;
+        height: 100%;
+        background: #f1f5f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        color: $primary-orange;
+        font-size: 1.5rem;
+
+        span {
+          font-size: 0.65rem;
+          font-weight: 800;
+          color: $dark-text;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .details {
+      flex: 1;
+      padding-top: 3.25rem;
+
+      .title-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
+
+        .restaurant-title {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: $dark-text;
+          margin: 0;
+          letter-spacing: -0.02em;
+        }
+
+        .badge-promo {
+          background: #fef2f2;
+          color: #ef4444;
+          font-size: 0.7rem;
+          font-weight: 800;
+          padding: 0.2rem 0.55rem;
+          border-radius: $radius-full;
+          border: 1px solid #fee2e2;
+          letter-spacing: 0.03em;
+        }
+      }
+
+      .tags-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .tag-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+          padding: 0.3rem 0.7rem;
+          border-radius: $radius-full;
+          background: #f1f5f9;
+          color: $muted-text;
+
+          &.category {
+            background: #fff4ed;
+            color: $primary-orange;
+            font-weight: 700;
+          }
+
+          &.rating {
+            background: #fffbeb;
+            color: #d97706;
+
+            .star-icon {
+              fill: #f59e0b;
+              color: #f59e0b;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// --- FILTROS DE BÚSQUEDA ---
+.menu-control-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $muted-text;
+      font-size: 1.1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.75rem;
+      border-radius: $radius-full;
+      border: 1.5px solid $light-border;
+      background: $card-bg;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $dark-text;
+      outline: none;
+      transition: all 0.2s ease;
+
+      &:focus {
+        border-color: $primary-orange;
+        box-shadow: 0 0 0 4px rgba(255, 94, 0, 0.1);
+      }
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+  }
+
+  .categories-pills {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-pill {
+      background: $card-bg;
+      border: 1.5px solid $light-border;
+      padding: 0.55rem 1.1rem;
+      border-radius: $radius-full;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: $muted-text;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: $primary-orange;
+        color: $primary-orange;
+      }
+
+      &.active {
+        background: $primary-orange;
+        color: #ffffff;
+        border-color: $primary-orange;
+        box-shadow: 0 4px 12px rgba(255, 94, 0, 0.25);
+      }
+    }
+  }
+}
+
+// --- PLATILLOS EN GRILLA ---
+.dishes-section {
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: $dark-text;
+      margin: 0;
+    }
+
+    .count {
+      font-size: 0.85rem;
+      color: $muted-text;
+      font-weight: 600;
+    }
+  }
+
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+
+    .dish-card {
+      background: $card-bg;
+      border-radius: $radius-md;
+      border: 1px solid $light-border;
+      padding: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all 0.25s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: $shadow-md;
+        border-color: rgba(255, 94, 0, 0.3);
+      }
+
+      .dish-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          margin: 0 0 0.35rem 0;
+          font-size: 1rem;
+          font-weight: 700;
+          color: $dark-text;
+        }
+
+        p {
+          margin: 0 0 0.75rem 0;
+          font-size: 0.82rem;
+          color: $muted-text;
+          line-height: 1.4;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        .dish-price {
+          margin-top: auto;
+          font-size: 1.05rem;
+          font-weight: 800;
+          color: $dark-text;
+        }
+      }
+
+      /* CONTENEDOR DE IMAGEN DEL PLATILLO REAJUSTADO */
+      .dish-media {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        border-radius: $radius-sm;
+        background: #f8fafc; /* Fondo suave para cuando la foto es transparente o no llena exacto */
+        border: 1px solid $light-border;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain; /* Muestra el plato entero sin recortar bordes */
+          padding: 2px;
+        }
+
+        .add-btn {
+          position: absolute;
+          bottom: 0.35rem;
+          right: 0.35rem;
+          background: #ffffff;
+          border: 1px solid $light-border;
+          color: $primary-orange;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1rem;
+          cursor: pointer;
+          box-shadow: $shadow-sm;
+          transition: all 0.2s ease;
+          z-index: 2;
+
+          &:hover {
+            background: $primary-orange;
+            color: #ffffff;
+            border-color: $primary-orange;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+// --- ESTADO VACÍO DE PRODUCTOS ---
+.empty-menu-card {
+  background: $card-bg;
+  border: 2px dashed $light-border;
+  border-radius: $radius-lg;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  max-width: 520px;
+  margin: 2rem auto;
+
+  .icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: #fff4ed;
+    color: $primary-orange;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 1.25rem auto;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: $dark-text;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: $muted-text;
+    line-height: 1.5;
+  }
+}
+
+// --- BARRA FLOTANTE CARRITO ---
+.floating-cart-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 480px;
+  background: $dark-text;
+  color: #ffffff;
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $shadow-lg;
+  z-index: 100;
+  animation: slideUp 0.3s ease-out;
+
+  .cart-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+
+    .badge {
+      background: $primary-orange;
+      color: #ffffff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+  }
+
+  .checkout-btn {
+    background: $primary-orange;
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: $radius-full;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $primary-orange-hover;
+    }
+  }
+}
+
+// --- NOTIFICACIÓN TOAST ---
+.custom-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: $dark-text;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: $shadow-lg;
+  z-index: 1000;
+  animation: fadeInRight 0.3s ease-out;
+
+  .check-icon {
+    color: #22c55e;
+    font-size: 1.1rem;
+  }
+}
+
+// --- ANIMACIONES ---
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes fadeInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+// --- RESPONSIVE MOBILE ---
+@media (max-width: 640px) {
+  .restaurant-header-card {
+    .info-bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 0;
+
+      .logo-box {
+        margin-top: -35px;
+      }
+
+      .details {
+        padding-top: 0.5rem;
+
+        .title-row, .tags-row {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .dishes-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

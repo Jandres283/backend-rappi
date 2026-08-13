@@ -1,0 +1,800 @@
+/* ==========================================================================
+   RESTAURANTS PAGE STYLES (DISEÑO BANNER HERO NARANJA VIBRANTE)
+   ========================================================================== */
+
+// VARIABLES DE COLOR Y DEGRADADOS
+$orange-primary: #ff5722;
+$orange-hover: #f4511e;
+$red-secondary: #ef4444;
+
+// Degradados vibrantes para el Hero/Banner
+$gradient-hero: linear-gradient(135deg, #ff5722 0%, #ff7043 50%, #e64a19 100%);
+$gradient-main: linear-gradient(135deg, #ff6b35 0%, #f43f5e 100%);
+$gradient-active: linear-gradient(135deg, #ff5722 0%, #de350b 100%);
+
+$bg-light: #f8fafc;
+$text-dark: #0f172a;
+$text-muted: #64748b;
+$border-light: #e2e8f0;
+
+.restaurants-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-light;
+  color: #1e293b;
+  padding: 2.5rem 1.5rem 5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  .restaurants-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+
+/* 1. ENCABEZADO TIPO BANNER / HERO CARD (AHORA EN NARANJA VIBRANTE) */
+.page-header {
+  background: $gradient-hero;
+  border-radius: 20px;
+  padding: 2rem 2.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 12px 30px -8px rgba(255, 87, 34, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Destello / Brillo sutil de fondo */
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    transform: rotate(30deg);
+  }
+
+  .title-area {
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      margin: 0.5rem 0 0;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+
+      .count-badge {
+        color: #ff5722;
+        font-weight: 800;
+        background: #ffffff;
+        padding: 0.25rem 0.8rem;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  /* Marca de agua decorativa blanca y limpia */
+  &::after {
+    content: "🍽️";
+    position: absolute;
+    right: 2.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    opacity: 0.35;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* 2. BARRA DE CONTROLES Y BÚSQUEDA */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+
+  .search-input-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a1a1aa;
+      font-size: 1.25rem;
+      transition: color 0.2s ease;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.9rem 3rem 0.9rem 3.2rem;
+      border: 1.5px solid $border-light;
+      border-radius: 9999px;
+      background-color: #ffffff;
+      font-size: 0.95rem;
+      color: $text-dark;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $orange-primary;
+        box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.15);
+
+        + .search-icon {
+          color: $orange-primary;
+        }
+      }
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: 50%;
+      transition: all 0.2s;
+
+      &:hover {
+        color: $orange-primary;
+        background-color: #fff1f2;
+      }
+    }
+  }
+
+  .filters-right {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+
+    .select-wrapper {
+      select {
+        padding: 0.9rem 1.25rem;
+        border: 1.5px solid $border-light;
+        border-radius: 9999px;
+        background-color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #334155;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        outline: none;
+        transition: all 0.2s;
+
+        &:hover {
+          border-color: #cbd5e1;
+        }
+
+        &:focus {
+          border-color: $orange-primary;
+        }
+      }
+    }
+
+    .btn-filter-modal {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      border: 1.5px solid $border-light;
+      border-radius: 9999px;
+      background-color: #ffffff;
+      color: #334155;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s ease;
+
+      &:hover {
+        background-color: #fffaf8;
+        border-color: $orange-primary;
+        color: $orange-primary;
+      }
+
+      &.active {
+        border-color: $orange-primary;
+        color: $orange-primary;
+        background-color: #fff1ec;
+      }
+
+      .active-dot {
+        width: 8px;
+        height: 8px;
+        background: $gradient-main;
+        border-radius: 50%;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+      }
+    }
+  }
+}
+
+/* 3. CARRUSEL DE CATEGORÍAS */
+.categories-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.25rem;
+
+  .categories-scroll-bar {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem 0.25rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 1.25rem;
+      border: 1.5px solid $border-light;
+      border-radius: 9999px;
+      background-color: #ffffff;
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      .icon {
+        font-size: 1.15rem;
+      }
+
+      &:hover {
+        background-color: #fff7f5;
+        border-color: #ffccbc;
+        color: $orange-primary;
+        transform: translateY(-1px);
+      }
+
+      &.active {
+        background: $gradient-active;
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 6px 16px rgba(255, 87, 34, 0.35);
+
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid $border-light;
+    background-color: #ffffff;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $gradient-main;
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    &.btn-left {
+      left: -14px;
+    }
+
+    &.btn-right {
+      right: -14px;
+    }
+  }
+}
+
+/* 4. GRILLA Y TARJETAS DE RESTAURANTES */
+.restaurants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 2rem;
+}
+
+.restaurant-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 30px -6px rgba(255, 87, 34, 0.15);
+    border-color: #ffe0b2;
+
+    .card-media .main-img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-media {
+    position: relative;
+    height: 195px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #0f172a;
+
+    .bg-blur {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(18px);
+      opacity: 0.6;
+      transform: scale(1.2);
+      pointer-events: none;
+    }
+
+    .main-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      z-index: 1;
+      transition: transform 0.4s ease;
+    }
+
+    .badge-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      background: rgba(15, 23, 42, 0.85);
+      color: #ffffff;
+      backdrop-filter: blur(6px);
+      padding: 0.35rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .fav-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #ffffff;
+        transform: scale(1.1);
+        color: $red-secondary;
+      }
+
+      &.active {
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  .card-body {
+    padding: 1.25rem;
+
+    .name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+
+      h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $text-dark;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        background-color: #fffbeb;
+        color: #b45309;
+        padding: 0.25rem 0.6rem;
+        border-radius: 8px;
+        font-size: 0.825rem;
+        font-weight: 800;
+
+        .star {
+          color: #f59e0b;
+          fill: #f59e0b;
+        }
+      }
+    }
+
+    .category-text {
+      margin: 0 0 1rem;
+      font-size: 0.875rem;
+      color: $text-muted;
+      font-weight: 500;
+    }
+
+    .info-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px dashed $border-light;
+      padding-top: 0.85rem;
+      font-size: 0.85rem;
+      color: #475569;
+      font-weight: 600;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+
+        svg {
+          color: $orange-primary;
+        }
+      }
+
+      .fee {
+        color: #16a34a;
+        background-color: #f0fdf4;
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+
+        svg {
+          color: #16a34a;
+        }
+      }
+    }
+  }
+}
+
+/* 5. ESTADO VACÍO */
+.empty-restaurants-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 480px;
+  margin: 3rem auto;
+  border: 2px dashed #fed7aa;
+
+  .empty-illustration {
+    width: 72px;
+    height: 72px;
+    background: #fff3ed;
+    color: $orange-primary;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  .empty-content {
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: $text-dark;
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      color: $text-muted;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 1.75rem;
+    }
+
+    .reset-btn {
+      padding: 0.75rem 1.75rem;
+      background: $gradient-main;
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(255, 87, 34, 0.3);
+      transition: all 0.25s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+      }
+    }
+  }
+}
+
+/* 6. MODAL DE FILTROS AVANZADOS */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  .modal-content {
+    background-color: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: $text-dark;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        color: $text-muted;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 50%;
+        transition: all 0.2s;
+
+        &:hover {
+          color: $text-dark;
+          background-color: #f1f5f9;
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .filter-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+
+        .option-title {
+          font-weight: 700;
+          color: $text-dark;
+          font-size: 0.95rem;
+          display: block;
+        }
+
+        .option-sub {
+          margin: 0.2rem 0 0;
+          font-size: 0.825rem;
+          color: $text-muted;
+        }
+
+        .checkbox-custom {
+          width: 24px;
+          height: 24px;
+          border: 2px solid #cbd5e1;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+
+          &.checked {
+            background: $gradient-main;
+            border-color: transparent;
+          }
+        }
+      }
+
+      .filter-group {
+        .option-title {
+          font-weight: 700;
+          color: $text-dark;
+          font-size: 0.95rem;
+          display: block;
+          margin-bottom: 0.75rem;
+        }
+
+        .rating-options {
+          display: flex;
+          gap: 0.5rem;
+
+          .rating-btn {
+            flex: 1;
+            padding: 0.65rem;
+            border: 1.5px solid $border-light;
+            border-radius: 12px;
+            background-color: #ffffff;
+            color: #475569;
+            font-size: 0.875rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+              background-color: #fff7f5;
+              border-color: #ffccbc;
+            }
+
+            &.active {
+              border-color: $orange-primary;
+              background-color: #fff1ec;
+              color: $orange-primary;
+            }
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      gap: 0.75rem;
+
+      button {
+        flex: 1;
+        padding: 0.85rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &.btn-secondary {
+          background-color: #f1f5f9;
+          border: none;
+          color: #475569;
+
+          &:hover {
+            background-color: #e2e8f0;
+          }
+        }
+
+        &.btn-primary {
+          background: $gradient-main;
+          border: none;
+          color: #ffffff;
+          box-shadow: 0 4px 12px rgba(255, 87, 34, 0.25);
+
+          &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(255, 87, 34, 0.35);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 7. RESPONSIVE */
+@media (max-width: 640px) {
+  .restaurants-page-wrapper {
+    padding: 1.5rem 1rem 3.5rem;
+  }
+
+  .page-header {
+    padding: 1.5rem 1.25rem;
+    
+    .title-area {
+      h1 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 0.875rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+
+    .filters-right {
+      justify-content: space-between;
+
+      .select-wrapper,
+      .btn-filter-modal {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  }
+
+  .restaurants-grid {
+    grid-template-columns: 1fr;
+  }
+}

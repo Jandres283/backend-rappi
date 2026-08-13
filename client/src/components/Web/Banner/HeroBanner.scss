@@ -1,0 +1,47 @@
+// src/components/Web/Banner/HeroBanner.scss
+@import "@/scss/colors";
+@import "@/scss/mixins";
+
+.hero-banner {
+  width: 100%;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+  padding: 3rem 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2);
+
+  .banner-content {
+    max-width: 600px;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin: 0 0 1rem 0;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 0 0 1.5rem 0;
+      opacity: 0.9;
+    }
+
+    .btn-cta {
+      background-color: #ffffff;
+      color: #ea580c;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}

@@ -1,0 +1,240 @@
+@use "@/scss/colors" as *;
+@use "@/scss/mixins" as *;
+
+.admin-login-page {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  
+  background-image: url("/Admin.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    width: 100%;
+    max-width: 1400px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 5rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    @media (max-width: 1200px) {
+      padding: 2rem 3rem;
+    }
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2rem 1.5rem;
+      gap: 2.5rem;
+    }
+  }
+
+  &__branding {
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    z-index: 2;
+
+    @media (max-width: 1200px) {
+      max-width: 400px;
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      max-width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+
+      @media (max-width: 900px) {
+        justify-content: center;
+      }
+
+      .logo-pill {
+        background: #ff5722;
+        padding: 0.4rem 1.1rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+
+        .brand-name {
+          color: #ffffff;
+          font-weight: 800;
+          font-size: 1.1rem;
+        }
+      }
+
+      .admin-badge {
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: #ff5722;
+        letter-spacing: 1px;
+      }
+    }
+
+    .hero-text {
+      h1 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #2b2420;
+        line-height: 1.2;
+        margin: 0 0 0.6rem 0;
+
+        span {
+          color: #ff5722;
+          display: block;
+        }
+
+        @media (max-width: 1200px) {
+          font-size: 1.8rem;
+        }
+
+        @media (max-width: 900px) {
+          font-size: 1.6rem;
+
+          span {
+            display: inline-block;
+            margin-left: 0.3rem;
+          }
+        }
+      }
+
+      p {
+        font-size: 0.925rem;
+        color: #5c524c;
+        line-height: 1.5;
+        margin: 0;
+
+        @media (max-width: 1200px) {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    .console-hud-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+
+      @media (max-width: 900px) {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .console-title {
+          font-size: 0.875rem;
+          font-weight: 700;
+          color: #2b2420;
+        }
+
+        .live-status {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          background: rgba(16, 185, 129, 0.12);
+          color: #059669;
+          padding: 0.25rem 0.65rem;
+          border-radius: 20px;
+          font-size: 0.7rem;
+          font-weight: 800;
+
+          .ping-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      &__metrics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+
+        .metric-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.15rem;
+          padding-bottom: 0.4rem;
+
+          &.border-teal {
+            border-bottom: 3px solid #00acc1;
+          }
+
+          &.border-orange {
+            border-bottom: 3px solid #ff5722;
+          }
+
+          .metric-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #1f2937;
+
+            @media (max-width: 1200px) {
+              font-size: 1.1rem;
+            }
+          }
+
+          .metric-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #6b7280;
+          }
+        }
+      }
+
+      &__footer {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.725rem;
+        color: #9ca3af;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 2;
+
+    @media (max-width: 900px) {
+      max-width: 100%;
+      justify-content: center;
+    }
+  }
+}

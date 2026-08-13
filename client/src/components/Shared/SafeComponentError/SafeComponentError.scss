@@ -1,0 +1,38 @@
+// src/components/Shared/SafeComponentError/SafeComponentError.scss
+@import "@/scss/colors";
+@import "@/scss/mixins";
+
+.safe-component-error {
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border: 1px solid #fecaca;
+  background-color: #fef2f2;
+  border-radius: 8px;
+  text-align: center;
+
+  h4 {
+    color: #991b1b;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  p {
+    color: #7f1d1d;
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .btn-retry {
+    padding: 0.5rem 1rem;
+    background-color: #dc2626;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #b91c1c;
+    }
+  }
+}

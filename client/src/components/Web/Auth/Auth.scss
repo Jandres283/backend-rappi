@@ -1,0 +1,126 @@
+@use "sass:color";
+
+$rappi-red: #ff3333;
+$text-dark: #1e293b;
+$text-gray: #64748b;
+$border-light: #e2e8f0;
+
+.auth-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: left;
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: $text-dark;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input-icon {
+        position: absolute;
+        left: 0.85rem;
+        color: $text-gray;
+        font-size: 1.1rem;
+        pointer-events: none;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.65rem 0.85rem 0.65rem 2.5rem;
+        border: 1px solid $border-light;
+        border-radius: 12px;
+        font-size: 0.88rem;
+        outline: none;
+        background: #ffffff;
+        color: $text-dark;
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+          color: #a0aec0;
+        }
+
+        &:focus {
+          border-color: $rappi-red;
+        }
+      }
+
+      .btn-toggle-password {
+        position: absolute;
+        right: 0.85rem;
+        background: none;
+        border: none;
+        color: $text-gray;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .btn-submit-auth {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.85rem;
+    background-color: $rappi-red;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 51, 51, 0.25);
+    transition: transform 0.15s ease, background-color 0.2s ease;
+
+    &:hover {
+      background-color: color.adjust($rappi-red, $lightness: -4%);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .auth-links-footer {
+    text-align: center;
+    margin-top: 0.3rem;
+
+    .forgot-link {
+      font-size: 0.8rem;
+      color: $text-dark;
+      font-weight: 700;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

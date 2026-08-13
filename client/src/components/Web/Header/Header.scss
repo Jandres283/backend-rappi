@@ -1,0 +1,402 @@
+/* ==========================================================================
+   HEADER SCSS - RAPPI
+   ========================================================================== */
+
+// 1. Módulos de Sass Moderno
+@use "sass:color";
+
+// 2. Módulos locales del proyecto
+@use "@/scss/colors" as *;
+@use "@/scss/mixins" as *;
+
+// Variables Locales de Respaldo
+$bg-header: #231c36 !default;
+$brand-orange: #ff5232 !default;
+$text-white: #ffffff !default;
+$text-muted: #a09cb0 !default;
+$border-color: rgba(255, 255, 255, 0.08) !default;
+$font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !default;
+
+// Estilos Globales del Header
+.web-header {
+  background-color: $bg-header;
+  border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    position: relative; // Para posicionamiento del menú flotante en móvil
+  }
+}
+
+/* --------------------------------------------------------------------------
+   1. LOGO RAPPI Y BOTÓN HAMBURGUESA
+   -------------------------------------------------------------------------- */
+.header-brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+// Botón Menú Hamburguesa
+.btn-mobile-menu {
+  display: none; // Oculto en pantallas grandes
+  background: transparent;
+  border: none;
+  color: $text-white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $brand-orange;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  .logo-icon {
+    font-size: 1.8rem;
+    color: $brand-orange;
+    transition: transform 0.25s ease;
+    filter: drop-shadow(0 2px 6px rgba(255, 82, 50, 0.4));
+  }
+
+  .logo-text.gradient-brand {
+    font-family: $font-main;
+    font-size: 1.85rem;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.6px;
+    line-height: 1;
+
+    /* Gradiente ajustado de blanco a rosa y naranja */
+    background: linear-gradient(90deg, #ffffff 0%, #f4a5a5 45%, #ff5232 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. NAVEGACIÓN PRINCIPAL
+   -------------------------------------------------------------------------- */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .nav-link {
+    color: $text-muted;
+    text-decoration: none;
+    font-family: $font-main;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    position: relative;
+    padding: 0.4rem 0;
+
+    &:hover {
+      color: $text-white;
+    }
+
+    &.active {
+      color: $brand-orange;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $brand-orange;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. BUSCADOR
+   -------------------------------------------------------------------------- */
+.header-search {
+  flex: 1;
+  max-width: 360px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    color: $text-muted;
+    font-size: 1.1rem;
+    pointer-events: none;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.6rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    color: $text-white;
+    font-family: $font-main;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.25s ease;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: $brand-orange;
+      box-shadow: 0 0 0 3px rgba(255, 82, 50, 0.15);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. BOTONES DE ACCIÓN (CARRITO, PERFIL DE USUARIO Y LOGIN)
+   -------------------------------------------------------------------------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  /* Botón Carrito */
+  .btn-cart-toggle {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: $text-white;
+    font-size: 1.2rem;
+    padding: 0.65rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: $brand-orange;
+      transform: translateY(-2px);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: $brand-orange;
+      color: $text-white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid $bg-header;
+    }
+  }
+
+  /* Menú de Usuario Logueado */
+  .user-profile-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.45rem 0.9rem;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .user-greeting {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: $font-main;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: $text-white;
+
+      .user-icon {
+        color: $brand-orange;
+        font-size: 1.1rem;
+      }
+    }
+
+    .btn-logout {
+      background: transparent;
+      border: none;
+      color: $text-muted;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      padding: 0.2rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        color: $brand-orange;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  /* Botón Ingresar */
+  .btn-auth {
+    background-color: $brand-orange;
+    color: $text-white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-family: $font-main;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(255, 82, 50, 0.3);
+
+    .btn-auth-icon {
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      background-color: color.adjust($brand-orange, $lightness: 5%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 82, 50, 0.45);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. RESPONSIVE Y ADAPTACIÓN MÓVIL
+   -------------------------------------------------------------------------- */
+@media (max-width: 850px) {
+  .btn-mobile-menu {
+    display: flex; // Muestra las 3 líneas (o X) en móviles
+  }
+
+  // Convertir navegación en menú desplegable hacia abajo
+  .header-nav {
+    display: none; // Se oculta por defecto en móviles
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    left: -1.5rem;
+    right: -1.5rem;
+    background-color: color.adjust($bg-header, $lightness: -3%);
+    border-bottom: 1px solid $border-color;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+
+    &.is-open {
+      display: flex; // Aparece al hacer clic en el ícono de hamburguesa
+      animation: fadeInDown 0.25s ease forwards;
+    }
+
+    .nav-link {
+      width: 100%;
+      padding: 0.75rem 0.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      &.active::after {
+        display: none; // En móvil se reemplaza la línea por texto coloreado/fondo
+      }
+
+      &.active {
+        background-color: rgba(255, 82, 50, 0.1);
+      }
+    }
+  }
+
+  .header-search {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 550px) {
+  .web-header {
+    padding: 0.8rem 1rem;
+  }
+
+  .header-search {
+    display: none; // Ocultar input de búsqueda en móviles muy pequeños para dar espacio al logo
+  }
+
+  .btn-auth span {
+    display: none; // Ocultar el texto "Ingresar" y dejar solo el ícono de usuario
+  }
+
+  .btn-auth {
+    padding: 0.65rem;
+    border-radius: 50%;
+  }
+
+  .user-profile-menu {
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+// Animación de entrada para el menú desplegable
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

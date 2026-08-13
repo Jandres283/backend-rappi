@@ -1,0 +1,54 @@
+/* 1. Variables de color corporativas */
+:root {
+  --primary: #FF441F;
+  --primary-hover: #E03513;
+  --primary-soft: rgba(255, 68, 31, 0.08);
+  --text: #64748B;
+  --text-h: #0F172A;
+  --bg-main: #F1F5F9;
+}
+
+/* 2. Forzar la anulación del background #fff de Semantic UI */
+html,
+body {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 3. Luces de fondo (Glows corporativos) */
+body::before {
+  content: '';
+  position: fixed;
+  top: -150px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 68, 31, 0.14) 0%, rgba(241, 245, 249, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 40%;
+  left: -150px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 120, 31, 0.08) 0%, rgba(241, 245, 249, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  background: transparent !important;
+  position: relative;
+  z-index: 1;
+}

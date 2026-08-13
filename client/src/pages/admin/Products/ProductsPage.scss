@@ -1,0 +1,222 @@
+/* ==========================================================================
+   🎨 DISEÑO NEOMÓRFICO CÁLIDO 3D REAL (CATÁLOGO DE PRODUCTOS)
+   ========================================================================== */
+
+/* Fondo global con patrón de red sutil cálido */
+:global(body), :global(#root) {
+  background-color: #f7ece1 !important;
+  background-image: 
+    linear-gradient(30deg, rgba(210, 185, 165, 0.25) 12%, transparent 12.5%, transparent 87%, rgba(210, 185, 165, 0.25) 87.5%, rgba(210, 185, 165, 0.25)),
+    linear-gradient(150deg, rgba(210, 185, 165, 0.25) 12%, transparent 12.5%, transparent 87%, rgba(210, 185, 165, 0.25) 87.5%, rgba(210, 185, 165, 0.25)),
+    linear-gradient(30deg, rgba(210, 185, 165, 0.25) 12%, transparent 12.5%, transparent 87%, rgba(210, 185, 165, 0.25) 87.5%, rgba(210, 185, 165, 0.25)),
+    linear-gradient(150deg, rgba(210, 185, 165, 0.25) 12%, transparent 12.5%, transparent 87%, rgba(210, 185, 165, 0.25) 87.5%, rgba(210, 185, 165, 0.25)),
+    linear-gradient(60deg, rgba(225, 200, 180, 0.25) 25%, transparent 25.5%, transparent 75%, rgba(225, 200, 180, 0.25) 75%),
+    linear-gradient(60deg, rgba(225, 200, 180, 0.25) 25%, transparent 25.5%, transparent 75%, rgba(225, 200, 180, 0.25) 75%);
+  background-size: 40px 70px;
+  background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+}
+
+.products-page {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #4a3831;
+
+  /* --------------------------------------------------------------------------
+     1. ENCABEZADO PRINCIPAL (HEADER 3D)
+     -------------------------------------------------------------------------- */
+  .page-header {
+    background: linear-gradient(180deg, #fffcf9 0%, #fbf0e6 100%);
+    padding: 1.5rem 2rem !important;
+    border-radius: 20px;
+    border: 3px solid #ff9800;
+    box-shadow: 0 8px 0 0 #e65100, 0 12px 20px rgba(255, 152, 0, 0.25);
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #2b1d17;
+      letter-spacing: -0.4px;
+    }
+
+    p {
+      color: #8c7368 !important;
+      font-weight: 600;
+    }
+
+    /* Botón "Nuevo Producto" con relieve 3D */
+    button {
+      background: linear-gradient(180deg, #f43f5e 0%, #e11d48 100%) !important;
+      border: 2px solid #be123c !important;
+      box-shadow: 0 4px 0 0 #9f1239, 0 6px 15px rgba(225, 29, 72, 0.3) !important;
+      transition: all 0.15s ease !important;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 0 #9f1239, 0 8px 18px rgba(225, 29, 72, 0.4) !important;
+      }
+
+      &:active {
+        transform: translateY(2px) !important;
+        box-shadow: 0 2px 0 0 #9f1239 !important;
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     2. BARRA DE FILTROS Y BÚSQUEDA (HUNDIDO NEOMÓRFICO)
+     -------------------------------------------------------------------------- */
+  .toolbar {
+    > div {
+      background: #fbf2eb !important;
+      border: 1px solid #e2cfbf !important;
+      box-shadow: inset 2px 2px 5px #e0cfc3, inset -2px -2px 5px #ffffff !important;
+
+      input {
+        color: #2b1d17;
+        font-weight: 600;
+
+        &::placeholder {
+          color: #a38c82;
+        }
+      }
+    }
+
+    select {
+      background: #ffffff !important;
+      border: 1px solid #e2cfbf !important;
+      color: #2b1d17 !important;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 8px rgba(185, 145, 120, 0.15), inset 0 -2px 0 rgba(220, 200, 185, 0.5) !important;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover, &:focus {
+        border-color: #ff9800 !important;
+        box-shadow: 0 4px 12px rgba(255, 152, 0, 0.25) !important;
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     3. TARJETAS DE PRODUCTO (CARDS ELEVADAS EN 3D)
+     -------------------------------------------------------------------------- */
+  > div:not(.toolbar):not(.page-header) {
+    /* Contenedor del Grid */
+    > div[style*="grid"] {
+      > div {
+        background: linear-gradient(180deg, #fffcf9 0%, #fbf0e6 100%) !important;
+        border: 3px solid #e2cfbf !important;
+        border-radius: 20px !important;
+        box-shadow: 0 6px 0 0 #cbb29e, 0 10px 20px rgba(185, 145, 120, 0.2) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 0 0 #cbb29e, 0 14px 25px rgba(185, 145, 120, 0.3) !important;
+        }
+
+        /* Badge de Categoría sobre la imagen */
+        span {
+          background: rgba(43, 29, 23, 0.85) !important;
+          backdrop-filter: blur(4px);
+          font-weight: 800;
+          letter-spacing: 0.5px;
+          border-radius: 8px !important;
+        }
+
+        /* Información del producto */
+        h3 {
+          color: #2b1d17 !important;
+          font-weight: 800 !important;
+        }
+
+        /* Precio */
+        span[style*="color: rgb(225, 29, 72)"], span[style*="color: #e11d48"] {
+          color: #e65100 !important;
+          font-weight: 900 !important;
+          font-size: 1.25rem !important;
+        }
+
+        /* Botones de acción (Editar y Eliminar) */
+        button {
+          transition: all 0.15s ease !important;
+          font-weight: 700;
+
+          &:hover {
+            transform: translateY(-1px);
+          }
+
+          &:active {
+            transform: translateY(1px);
+          }
+        }
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     4. MODAL CRUD (VENTANA FLOTANTE NEOMÓRFICA)
+     -------------------------------------------------------------------------- */
+  div[style*="position: fixed"] {
+    background: rgba(43, 29, 23, 0.45) !important;
+    backdrop-filter: blur(5px);
+
+    > div {
+      background: linear-gradient(180deg, #fffcf9 0%, #fbf0e6 100%) !important;
+      border: 3px solid #e2cfbf !important;
+      border-radius: 22px !important;
+      box-shadow: 0 12px 0 0 #cbb29e, 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+
+      h2 {
+        color: #2b1d17;
+        font-weight: 800;
+      }
+
+      /* Inputs, Selects y Textarea del formulario modal */
+      input[type="text"], 
+      input[type="number"], 
+      select, 
+      textarea {
+        background: #fbf2eb !important;
+        border: 1px solid #e2cfbf !important;
+        color: #2b1d17 !important;
+        font-weight: 600 !important;
+        box-shadow: inset 1px 1px 4px #e0cfc3, inset -1px -1px 4px #ffffff !important;
+
+        &:focus {
+          outline: none;
+          border-color: #ff9800 !important;
+          box-shadow: inset 1px 1px 4px #e0cfc3, 0 0 0 2px rgba(255, 152, 0, 0.25) !important;
+        }
+      }
+
+      /* Botones de acción del Modal */
+      button[type="submit"] {
+        background: linear-gradient(180deg, #f43f5e 0%, #e11d48 100%) !important;
+        border: 2px solid #be123c !important;
+        box-shadow: 0 4px 0 0 #9f1239 !important;
+        color: #ffffff !important;
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 5px 0 0 #9f1239 !important;
+        }
+
+        &:active {
+          transform: translateY(1px);
+          box-shadow: 0 2px 0 0 #9f1239 !important;
+        }
+      }
+
+      button[type="button"] {
+        background: #eee0d3 !important;
+        color: #4a3831 !important;
+        border: 1px solid #decbbb !important;
+        font-weight: 700;
+
+        &:hover {
+          background: #e4d3c3 !important;
+        }
+      }
+    }
+  }
+}

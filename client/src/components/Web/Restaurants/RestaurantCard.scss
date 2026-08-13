@@ -1,0 +1,24 @@
+.restaurant-card {
+  /* ... tus otros estilos ... */
+
+  .restaurant-image {
+    width: 100%;
+    height: 170px; /* Altura uniforme para todas las tarjetas */
+    overflow: hidden;
+    background-color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      /* 
+        - Usa 'cover' para que llene todo el recuadro centrado y elegante.
+        - O cambia a 'contain' si prefieres que la fachada se vea 100% entera sin recortar nada.
+      */
+      object-fit: cover; 
+      object-position: center;
+    }
+  }
+}

@@ -1,0 +1,253 @@
+@use "./colors" as *;
+@use "./mixins" as *;
+
+// CSS Reset Moderno
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scrollbar Estilizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-300;
+  border-radius: 4px;
+
+  &:hover {
+    background: $gray-400;
+  }
+}
+
+/* ==========================================================================
+   HOME PAGE & RESTAURANTE STYLES (Usa tus variables y mixins)
+   ========================================================================== */
+
+.homeContainer {
+  width: 100%;
+  max-width: $breakpoint-wide;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem 1rem;
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+/* --- HEADER BAR --- */
+.top-header-bar {
+  @include flex-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  .location-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .pin-icon {
+      color: $primary;
+      font-size: 1.25rem;
+    }
+
+    .address {
+      font-weight: 700;
+      color: $gray-900;
+    }
+  }
+
+  .delivery-toggle {
+    display: flex;
+    background-color: $gray-200;
+    padding: 4px;
+    border-radius: 20px;
+
+    .toggle-btn {
+      border: none;
+      background: transparent;
+      padding: 0.4rem 1rem;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $gray-600;
+
+      &.active {
+        background-color: $white;
+        color: $primary;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+}
+
+/* --- BUSCADOR --- */
+.search-section {
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: $white;
+    border: 1px solid $gray-300;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+
+    input {
+      border: none;
+      outline: none;
+      width: 100%;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+/* --- SECCIÓN Y REJILLA DE RESTAURANTES --- */
+.restaurants-section {
+  .section-header {
+    @include flex-between;
+    margin-bottom: 1.25rem;
+
+    h2 {
+      font-size: 1.35rem;
+      color: $gray-900;
+    }
+  }
+
+  .loading-state,
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: $white;
+    border: 1px dashed $gray-300;
+    border-radius: 12px;
+    color: $gray-600;
+  }
+
+  .restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    .restaurant-card {
+      @include card-style;
+      padding: 0; // Sobrescribimos padding para adaptar la imagen
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-image-wrapper {
+        position: relative;
+        height: 180px;
+        background-color: $gray-100;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .card-badge {
+          position: absolute;
+          top: 0.75rem;
+          left: 0.75rem;
+          background: $secondary;
+          color: $white;
+          font-size: 0.75rem;
+          font-weight: 700;
+          padding: 0.25rem 0.5rem;
+          border-radius: 6px;
+        }
+      }
+
+      .card-content {
+        padding: 1.25rem;
+
+        .card-header {
+          @include flex-between;
+
+          h3 {
+            font-size: 1.1rem;
+            color: $gray-900;
+          }
+
+          .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            color: $accent;
+            font-weight: 700;
+            font-size: 0.9rem;
+          }
+        }
+
+        .category-text {
+          font-size: 0.85rem;
+          color: $gray-500;
+          margin: 0.25rem 0 1rem 0;
+        }
+
+        .card-footer {
+          @include flex-between;
+          border-top: 1px solid $gray-200;
+          padding-top: 0.75rem;
+          font-size: 0.85rem;
+          color: $gray-600;
+
+          .delivery-fee {
+            color: $success;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
